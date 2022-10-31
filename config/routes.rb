@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/show'
-    get 'items/edit'
+    resources :items, only: [:new, :show, :index, :edit, :create]
+
   end
   # 管理者用
   # URL /admin/sign_in ...
