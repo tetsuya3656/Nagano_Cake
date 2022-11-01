@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    resources :items, only: [:new, :show, :index, :edit, :create]
+    resources :items, only: [:new, :show, :index, :edit, :create, :update]
 
   end
   # 管理者用

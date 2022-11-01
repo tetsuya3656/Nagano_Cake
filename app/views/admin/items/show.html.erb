@@ -20,6 +20,7 @@
           <th><%= @item.item.with_tax_price%>(<%= @item.price %>)円</th>
         </tr>
       </table>
+      <%= link_to "編集する", edit_admin_item_path(@item) %>
     </div>
 </div>
 
