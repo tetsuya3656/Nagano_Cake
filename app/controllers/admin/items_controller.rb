@@ -10,6 +10,7 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    @item.genre_id = 1
     @item.save
     redirect_to admin_item_path(@item.id)
   end
@@ -23,6 +24,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def update
+    @item = Item.find(params[:id])
     @item.update(item_params)
     redirect_to admin_item_path(@item.id)
   end
