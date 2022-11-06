@@ -3,6 +3,7 @@
     <thead>
       <tr>
         <th>会員ID</th>
+        <th><%= @customer.id %></th>
       </tr>
       <tr>
         <th>氏名</th>
@@ -12,22 +13,32 @@
       </tr>
       <tr>
         <th>郵便番号</th>
+        <th><%= @customer.postal_code %></th>
       </tr>
       <tr>
         <th>住所</th>
+        <th><%= @customer.address %></th>
       </tr>
       <tr>
         <th>電話番号</th>
+        <th><%= @customer.telephone_number %></th>
       </tr>
       <tr>
         <th>メールアドレス</th>
+        <th><%= @customer.email %></th>
       </tr>
       <tr>
         <th>会員ステータス</th>
+        <th><% if @customer.is_deleted == false %>
+            有効
+            <% else %>
+            退会
+            <% end %>
+        </th>
       </tr>
     </thead>
   </table>
 
-  <%= "編集する" %>
+  <%= link_to "編集する", edit_admin_customer_path(@customer.id) %>
   <%= "注文履歴一覧を見る" %>
 

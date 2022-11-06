@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :items, only: [:new, :show, :index, :edit, :create, :update]
-    resources :customers, only: [:index, :show, :edit]
+    resources :customers, only: [:index, :show, :edit, :update]
   end
   # 管理者用
   # URL /admin/sign_in ...
