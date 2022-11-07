@@ -1,16 +1,19 @@
 Rails.application.routes.draw do
 
 
-  namespace :admin do
-    get 'orders/show'
+  namespace :public do
+    get 'homes/top'
+    root to: "homes#top"
+    get '/homes/about', to: 'homes#about', as: "about"
   end
+
   namespace :admin do
     get 'homes/top'
     root to: "homes#top"
-  end
-  namespace :admin do
+
     resources :items, only: [:new, :show, :index, :edit, :create, :update]
     resources :customers, only: [:index, :show, :edit, :update]
+    resource :orders, only: [:show]
   end
   # 管理者用
   # URL /admin/sign_in ...
