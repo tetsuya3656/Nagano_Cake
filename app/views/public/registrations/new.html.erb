@@ -4,48 +4,48 @@
   <%= render "public/shared/error_messages", resource: resource %>
 
 　<div class="field">
-    <%= f.label :名前 %>
+    <%= f.label :名前 %><br/>
     (姓)<%= f.text_field :last_name, autofocus: true, autocomplete: "令和" %>
     (名)<%= f.text_field :first_name, autofocus: true, autocomplete: "太郎" %>
   </div>
 
   <div class="field">
-    <%= f.label :フリガナ %>
+    <%= f.label :フリガナ %><br/>
     (セイ)<%= f.text_field :last_name_kana, autofocus: true, autocomplete: "レイワ" %>
     (メイ)<%= f.text_field :first_name_kana, autofocus: true, autocomplete: "タロウ" %>
   </div>
 
   <div class="field">
-    <%= f.label :メールアドレス %>
+    <%= f.label :メールアドレス %><br/>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
-    <%= f.label :郵便番号 %>
+    <%= f.label :郵便番号（ハイフンなし） %><br/>
     <%= f.text_field :postal_code, autofocus: true, autocomplete: "0000000" %>
   </div>
 
   <div class="field">
-    <%= f.label :住所 %>
+    <%= f.label :住所 %><br/>
     <%= f.text_field :address, autofocus: true, autocomplete: "東京都渋谷区代々木神園町0-0" %>
   </div>
 
   <div class="field">
-    <%= f.label :電話番号 %>
-    <%= f.text.field :telephone_number, autofocus: true, autocomplete: "00000000" %>
+    <%= f.label :電話番号（ハイフンなし） %><br>
+    <%= f.text_field :telephone_number, autofocus: true, autocomplete: "00000000" %>
   </div>
 
   <div class="field">
     <%= f.label :パスワード %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <em>（<%= @minimum_password_length %> 字以上）</em>
+    <% end %><br/>
+    <%= f.password_field :encrypted_password, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.label :パスワード（確認用） %><br/>
+    <%= f.password_field :encrypted_password, autocomplete: "new-password" %>
   </div>
 
   <div class="actions">
@@ -53,4 +53,6 @@
   </div>
 <% end %>
 
-<%= render "public/shared/links" %>
+
+<h4>既に登録済みの方</h4>
+<%= render  "public/shared/links" %><%= "からログインしてください" %>
