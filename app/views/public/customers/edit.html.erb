@@ -1,2 +1,21 @@
-<h1>P</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<h1>会員情報編集</h1>
+  <%= form_with model: @customer, public_customer_path method: :patch do |f| %>
+
+    <h2>氏名</h2>
+      <%= f.text_field :last_name %>
+      <%= f.text_field :first_name %>
+    <h2>フリガナ</h2>
+      <%= f.text_field :last_name_kana %>
+      <%= f.text_field :first_name_kana %>
+    <h2>郵便番号</h2>
+      <%= f.text_field :postal_code %>
+    <h2>住所</h2>
+      <%= f.text_field :address %>
+    <h2>電話番号</h2>
+      <%= f.text_field :telephone_number %>
+    <h2>メールアドレス</h2>
+      <%= f.text_field :address %>
+
+    <%= f.submit '編集内容を保存' %>
+
+  <% end %>
