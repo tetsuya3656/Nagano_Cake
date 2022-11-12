@@ -2,6 +2,11 @@ Rails.application.routes.draw do
 
 
   namespace :public do
+    get 'customers/show'
+    get 'customers/edit'
+    get 'customers/unsubscribe'
+  end
+  namespace :public do
     get 'homes/top'
     root to: "homes#top"
     get '/homes/about', to: 'homes#about', as: "about"
