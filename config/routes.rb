@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
 
 
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/unsubscribe'
-  end
+
   namespace :public do
     get 'homes/top'
     root to: "homes#top"
     get '/homes/about', to: 'homes#about', as: "about"
+    resources :customers, only: [:show, :edit, :unsubscribe]
+    get 'unsubscribe/:name' => 'customerss#unsubscribe', as: 'confirm_unsubscribe'
+    patch ':id/withdraw/:name' => 'customers#withdraw', as: 'withdraw_customer'
+    put 'withdraw/:name' => 'customers#withdraw'
   end
 
   namespace :admin do
