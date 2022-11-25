@@ -21,6 +21,12 @@
           ￥<%= @item.with_tax_price %>（税込）
         </td>
       </tr>
-
+      <tr>
+        <%= form_with model: @cart_item, url: public_cart_items_path, method: :post do |f| %>
+          <%= hidden_field :item_id, :value => @item.id %>
+          <%= f.select :amount, *[1..99] %>
+          <%= f.submit "カートに入れる" %>
+        <% end %>
+      </tr>
   </table>
 

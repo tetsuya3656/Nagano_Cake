@@ -2,13 +2,13 @@ Rails.application.routes.draw do
 
 
 
-
   namespace :public do
     get 'homes/top'
     root to: "homes#top"
-    get '/homes/about', to: 'homes#about', as: "about"
+    get '/about', to: 'homes#about', as: "about"
     resources :customers, only: [:show, :edit, :unsubscribe]
     resources :items, only: [:index, :show]
+    resources :cart_items, only: [:index, :create]
     get 'unsubscribe/:name' => 'customerss#unsubscribe', as: 'confirm_unsubscribe'
     patch ':id/withdraw/:name' => 'customers#withdraw', as: 'withdraw_customer'
     put 'withdraw/:name' => 'customers#withdraw'
@@ -20,7 +20,8 @@ Rails.application.routes.draw do
 
     resources :items, only: [:new, :show, :index, :edit, :create, :update]
     resources :customers, only: [:index, :show, :edit, :update]
-    resource :orders, only: [:show]
+    resources :orders, only: [:show]
+
   end
   # 管理者用
   # URL /admin/sign_in ...
