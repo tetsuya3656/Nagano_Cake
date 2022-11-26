@@ -22,11 +22,14 @@
         </td>
       </tr>
       <tr>
+        <td>
         <%= form_with model: @cart_item, url: public_cart_items_path, method: :post do |f| %>
-          <%= hidden_field :item_id, :value => @item.id %>
+          <%= f.hidden_field :item_id, value: @item.id %>
+          <%= f.hidden_field :customer_id, value: @customer.id %>
           <%= f.select :amount, *[1..99] %>
           <%= f.submit "カートに入れる" %>
         <% end %>
+        </td>
       </tr>
   </table>
 

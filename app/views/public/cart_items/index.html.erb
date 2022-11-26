@@ -1,4 +1,5 @@
 <h1>ショッピングカート</h1>
+  <%= link_to "カートを空にする", public_cart_items_destroy_all_path, method: :delete %>
   <table border = "1">
     <thead>
       <tr>
@@ -12,11 +13,31 @@
     <% @cart_items.each do |cart_item| %>
     <tbody>
       <tr>
-        <th><%= item.name %></th>
-        <th><%= item.with_tax_price %></th>
-        <th><%= cart_item.amount %></th>
-        <th><%= cart_item.subtotal %></th>
+        <td><%= image_tag cart_item.item.image %>
+            <%= cart_item.item.name %></td>
+        <td><%= cart_item.item.with_tax_price %></td>
+        <td>
+        <%= form_with model: cart_item, url: public_cart_item_path(cart_item.id), method: :patch do |f| %>
+          <%= f.select :amount, *[1..99] %>
+          <%= f.submit "変更" %>
+        <% end %>
+        </td>
+        <td><%= cart_item.subtotal %></td>
+        <td><%= link_to "削除", public_cart_item_path(cart_item.id), method: :delete %></td>
       </tr>
     </tbody>
     <% end %>
   </table>
+  <table>
+    <tr>
+      <th>合計金額</th>
+      <td>
+      <% @cart_items.each do |cart_item| %>
+      <% @total += cart_item.subtotal %>
+      <%= @total %>
+      <% end %>
+      </td>
+    </tr>
+
+  </table>
+  <%= link_to "買い物を続ける", public_root_path %>
