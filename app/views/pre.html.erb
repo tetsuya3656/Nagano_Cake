@@ -1,0 +1,15 @@
+
+
+
+def new
+    @order = Order.new
+    @orders = current_customer.orders.all
+    @customer = Customer.find(current_customer.id)
+  end
+  
+private
+
+ def order_params
+   params.require(:order).permit(:postal_code, :name, :address, :total_payment, :shipping_cost)
+ end
+  

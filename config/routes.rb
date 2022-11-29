@@ -1,15 +1,17 @@
 Rails.application.routes.draw do
 
 
+
   namespace :public do
     get 'homes/top'
     root to: "homes#top"
     get '/about', to: 'homes#about', as: "about"
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+    post 'orders/comfirm' => 'orders#comfirm'
     resources :customers, only: [:show, :edit, :update]
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :create, :update, :destroy,]
-    resources :orders, only: [:create, :index, :show, :complete]
+    resources :orders, only: [:new, :create, :index, :show, :complete]
 
     get 'unsubscribe/:name' => 'customerss#unsubscribe', as: 'confirm_unsubscribe'
     patch ':id/withdraw/:name' => 'customers#withdraw', as: 'withdraw_customer'

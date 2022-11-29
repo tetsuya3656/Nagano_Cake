@@ -15,9 +15,17 @@
   <div class="row">
     <div>
       新着商品
+    </div></br>
+    <div class="col-md-3">
+      <% @items.each do |item| %>
+        <%= image_tag @item.image, width:"200px", height:"200px" %>
+        <%= @item.name %>
+        ￥<%= @item.price %>
+      <% end %>
     </div>
-    
-    
+
+
+
   </div>
 </div>
 
