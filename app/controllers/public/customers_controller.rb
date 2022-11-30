@@ -1,4 +1,5 @@
 class Public::CustomersController < ApplicationController
+  before_action :reject_inactive_customer, only: [:create]
   def show
     @customer = Customer.find(params[:id])
 
@@ -16,15 +17,17 @@ class Public::CustomersController < ApplicationController
   end
 
   def unsubscribe
-    @customer = Customer.find_by(last_name: params[:last_name], first_name: params[:first_name])
+    @customer = current_customer
   end
 
   def withdraw
-    @customer = Customer.find_by(last_name: params[:last_name], first_name: params[:first_name])
-    @Customer.update(is_deleted: true)
+    @customer = current_customer
+    @customer.update(is_deleted: true)
     reset_session
-    redirect_to root_path
+    redirect_to public_root_path
   end
+
+  
 
   private
   def customer_params

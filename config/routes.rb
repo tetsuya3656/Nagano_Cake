@@ -13,9 +13,9 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:index, :create, :update, :destroy,]
     resources :orders, only: [:new, :create, :index, :show, :complete]
 
-    get 'unsubscribe/:name' => 'customerss#unsubscribe', as: 'confirm_unsubscribe'
-    patch ':id/withdraw/:name' => 'customers#withdraw', as: 'withdraw_customer'
-    put 'withdraw/:name' => 'customers#withdraw'
+    get 'unsubscribe/:id' => 'customers#unsubscribe', as: 'confirm_unsubscribe'
+    patch ':id/withdraw/:id' => 'customers#withdraw', as: 'withdraw_customer'
+    put 'withdraw/:id' => 'customers#withdraw'
 
 
   end

@@ -16,13 +16,16 @@
     <div>
       新着商品
     </div></br>
-    <div class="col-md-3">
+    <div>
       <% @items.each do |item| %>
-        <%= image_tag @item.image, width:"200px", height:"200px" %>
-        <%= @item.name %>
-        ￥<%= @item.price %>
+        <%= link_to public_item_path(item.id) do %>
+          <%= image_tag item.image, width:"200px", height:"200px" %>
+          <%= item.name %>
+          ￥<%= item.price %>
+        <% end %>
       <% end %>
     </div>
+    <%= link_to "すべての商品を見る", public_items_path %>
 
 
 
