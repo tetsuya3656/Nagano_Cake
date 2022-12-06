@@ -7,12 +7,13 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get '/about', to: 'homes#about', as: "about"
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
-    post 'orders/comfirm' => 'orders#comfirm'
+
+    get 'orders/complete' => 'orders#complete'
     resources :customers, only: [:show, :edit, :update]
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :create, :update, :destroy,]
     resources :orders, only: [:new, :create, :index, :show, :complete]
-
+    post 'orders/comfirm' => 'orders#comfirm'
     get 'unsubscribe/:id' => 'customers#unsubscribe', as: 'confirm_unsubscribe'
     patch ':id/withdraw/:id' => 'customers#withdraw', as: 'withdraw_customer'
     put 'withdraw/:id' => 'customers#withdraw'
