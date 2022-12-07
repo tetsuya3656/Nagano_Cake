@@ -8,7 +8,7 @@ class Public::CartItemsController < ApplicationController
     @cart_item = current_customer.cart_items.build(cart_item_params)
     @cart_items = CartItem.where(customer_id: current_customer.id)
 
-    @cart_item.save!
+    @cart_item.save
 
     redirect_to public_cart_items_path
   end
