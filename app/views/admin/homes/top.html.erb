@@ -1,4 +1,5 @@
 <h1>注文履歴一覧</h1>
+<table>
   <thead>
     <tr>
       <th>購入日時</th>
@@ -8,13 +9,19 @@
     </tr>
   </thead>
   <tbody>
-    <%= @orders.each do |order| %>
+    <% @orders.each do |order| %>
       <tr>
-        <td><%= order.created_at %></td>
-        <td><%= order.customer.name %></td>
-        <%# each文の中にeach文を書く%>
-        <td><%= order.order_detail.amount %></td>
+        <td><%= link_to order.created_at, admin_order_path(order.id) %></td>
+        <td><%= order.name %></td>
+        <td>
+          <% @total = 0 %>
+          <% order.order_details.each do |order_detail| %>
+          <% @total = @total + order_detail.amount %>
+          <% end %>
+          <%= @total %>
+        </td>
         <td><%= order.status %></td>
       </tr>
     <% end %>
   </tbody>
+</table>

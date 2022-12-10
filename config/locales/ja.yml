@@ -6,7 +6,7 @@ ja:
         transfer: "銀行振込"
 
 
-  enums:
+
     order:
       status:
         wait: "入金待ち"
@@ -16,7 +16,7 @@ ja:
         shipped: "発送済み"
 
 
-  enums:
+
     order_detail:
       making_status:
         not_making: "製作不可"

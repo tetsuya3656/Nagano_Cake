@@ -21,13 +21,13 @@
           <%= order.name %>
       </td>
       <td>
-        <% @orders.each do |order| %>
-          <%= order.order_detail.name %>
+        <% order.items.each do |item| %>
+          <%= item.name %>
         <% end %>
       </td>
       <td><%= order.total_payment %>円</td>
-      <td><%= order.status %></td>
-      <td><%= link_to "表示する", public_order_path(current_customer) %></td>
+      <td><%= order.status_i18n %></td>
+      <td><%= link_to "表示する", public_order_path(order.id) %></td>
     </tr>
   </tbody>
   <% end %>

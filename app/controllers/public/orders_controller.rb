@@ -26,11 +26,11 @@ class Public::OrdersController < ApplicationController
 
     @order.save!
     @cart_items.each do |cart_item|
-      @order_detail = OrderDetail.new
+      @order_detail = OrderDetail.new(order_id: @order.id)
       @order_detail.price = cart_item.item.price
-      @order_detail.item_id = cart_item.item.item_id
-      @order_detail.order_id = cart_item.item.order_id
-      @order_detail.amount = cart_item.item.amount
+      @order_detail.item_id = cart_item.item_id
+
+      @order_detail.amount = cart_item.amount
       @order_detail.save
     end
     redirect_to public_orders_complete_path
@@ -48,8 +48,10 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_items = @order.order_items.all
-
+    @order_details = @order.order_details.all
+    
+    @order.shipping_cost = 800
+    @total = 0
   end
 
 
