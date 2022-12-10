@@ -1,4 +1,4 @@
-<h1>会員情報編集t</h1>
+<h1>会員情報編集</h1>
 
   <%= form_with model: @customer, url: admin_customer_path, method: :patch do |f| %>
     <h2>会員ID</h2>
@@ -16,7 +16,7 @@
     <h2>電話番号</h2>
       <%= f.text_field :telephone_number %>
     <h2>メールアドレス</h2>
-      <%= f.text_field :address %>
+      <%= f.text_field :email %>
     <h2>会員ステータス</h2>
       <%= f.radio_button :is_deleted, "false" %>
         <%= f.label :is_deleted, "有効" %>

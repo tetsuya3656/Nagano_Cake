@@ -1,5 +1,6 @@
 <h1>マイページ</h1>
 <p>登録情報</p>
+<%= link_to "編集する", edit_public_customer_path(current_customer) %>
 
 <table>
   <tr>
@@ -29,3 +30,4 @@
 </table>
 
 <P>注文履歴</P>
+<%= link_to "一覧を見る", public_orders_path %>
