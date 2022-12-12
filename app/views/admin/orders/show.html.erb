@@ -1,13 +1,13 @@
 <h1>注文履歴詳細</h1>
 
   <h2>購入者</h2>
-    <%= link_to @order.name, admin_customer_path(@customer.id) %>
+    <%= link_to @order.name, admin_customer_path(@order.customer.id) %>
   <h2>注文日</h2>
     <%= @order.created_at %>
   <h2>配送先</h2>
     <%= @order.address %>
   <h2>支払方法</h2>
-    <%= @order.payment_method %>
+    <%= @order.payment_method_i18n %>
   <h2>注文ステータス</h2>
     <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
       <%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
@@ -33,7 +33,7 @@
         <td><%= order_detail.amount %></td>
         <td><%= order_detail.subtotal %></td>
         <td>
-          <%= form_with model: order_detail, url: admin_order_order_detail_path(order_detail.id), method: :patch, local: true do |f| %>
+          <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch, local: true do |f| %>
             <%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
             <%= f.submit "更新" %>
           <% end %>

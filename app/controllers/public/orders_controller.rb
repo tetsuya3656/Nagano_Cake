@@ -1,7 +1,11 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
   def new
-    @order = Order.new
+
+      @order = Order.new
+
+
+
   end
 
   def comfirm
@@ -33,7 +37,7 @@ class Public::OrdersController < ApplicationController
       @order_detail.amount = cart_item.amount
       @order_detail.save
     end
-    redirect_to public_orders_complete_path
+    redirect_to orders_complete_path
     @cart_items.destroy_all
 
   end
@@ -49,7 +53,7 @@ class Public::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details.all
-    
+
     @order.shipping_cost = 800
     @total = 0
   end

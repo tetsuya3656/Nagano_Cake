@@ -18,14 +18,14 @@
     </div></br>
     <div>
       <% @items.each do |item| %>
-        <%= link_to public_item_path(item.id) do %>
+        <%= link_to item_path(item.id) do %>
           <%= image_tag item.image, width:"200px", height:"200px" %>
           <%= item.name %>
           ￥<%= item.price %>
         <% end %>
       <% end %>
     </div>
-    <%= link_to "すべての商品を見る", public_items_path %>
+    <%= link_to "すべての商品を見る", items_path %>
 
 
 

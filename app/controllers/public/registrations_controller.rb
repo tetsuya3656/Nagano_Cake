@@ -3,8 +3,8 @@
 class Public::RegistrationsController < Devise::RegistrationsController
 before_action :configure_permitted_parameters, if: :devise_controller?
 
-def after_inactive_sign_up_path_for(resource)
-  public_customer_path # 遷移したい画面先
+def after_sign_up_path_for(resource)
+  customer_path(current_customer) # 遷移したい画面先
 end
 
 
